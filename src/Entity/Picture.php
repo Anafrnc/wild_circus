@@ -98,7 +98,7 @@ class Picture
         if ($image) {
             $this->update_at = new \DateTime('now');
         }
-        return $this;
+        //return $this;
     }
 
     public function getSourceFile(): ?File
