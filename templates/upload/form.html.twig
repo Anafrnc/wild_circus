@@ -1,1 +1,22 @@
-{{ form(form) }}
+<h3 class="text-center">Ajoutez une image à la gallery :</h3>
+<br>
+{{ form_start(form) }}
+<div class="upload form">
+    <div class="form-group">
+        {{ form_row(form.name) }}
+    </div>
+    <div class="form-group">
+        {{ form_row(form.description) }}
+    </div>
+    <div class="form-group">
+        {{ form_row(form.source) }}
+    </div>
+    <div class="form-group">
+        {{ form_row(form.category) }}
+    </div>
+    <div class="form-group">
+        {{ form_row(form.send) }}
+    </div>
+
+</div>
+{{ form_end(form) }}

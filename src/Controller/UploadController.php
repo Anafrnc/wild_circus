@@ -37,6 +37,7 @@ class UploadController extends AbstractController
         if ($uploadForm->isSubmitted() && $uploadForm->isValid()) {
             $entityManager->persist($picture);
             $entityManager->flush();
+            $this->addFlash('dark', 'Votre image a bien été rajoutée à la galerie ! :)');
 
             //return $this->redirectToRoute('/');
 
