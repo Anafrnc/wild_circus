@@ -3,9 +3,12 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\PictureRepository")
+ * @Vich\Uploadable
  */
 class Picture
 {
@@ -30,6 +33,12 @@ class Picture
      * @ORM\Column(type="text")
      */
     private $source;
+
+    /**
+     * @Vich\UploadableField(mapping="source_file", fileNameProperty="source")
+     * @var File
+     */
+    private $sourceFile;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
@@ -81,6 +90,22 @@ class Picture
 
         return $this;
     }
+
+    public function setSourceFile(File $image = null): void
+    {
+        $this->sourceFile = $image;
+
+        if ($image) {
+            $this->update_at = new \DateTime('now');
+        }
+        return $this;
+    }
+
+    public function getSourceFile(): ?File
+    {
+        return $this->sourceFile;
+    }
+
 
     public function getUpdateAt(): ?\DateTimeInterface
     {
