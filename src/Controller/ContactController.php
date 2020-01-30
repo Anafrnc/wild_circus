@@ -6,7 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/contact", name="contact_")
+ * @Route("/upload", name="upload_")
  */
 class ContactController extends AbstractController
 {

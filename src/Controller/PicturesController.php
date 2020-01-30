@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Entity\Picture;
 use App\Form\PictureType;
-use App\Repository\CategoryRepository;
 use App\Repository\PictureRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -21,7 +20,7 @@ class PicturesController extends AbstractController
     /**
      * @Route("/", name="index")
      */
-    public function index(CategoryRepository $categoryRepository, PictureRepository $pictureRepository): Response
+    public function index(PictureRepository $pictureRepository): Response
     {
         $image = $pictureRepository->findAll();
         return $this->render('pictures/index.html.twig', [
