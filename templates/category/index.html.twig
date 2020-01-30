@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ category.name}}{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <div class="row mt-4">
+            <div class="col-12 text-center">
+                <h1 > {{ category.name }}</h1>
+            </div>
+            <div class="col-12 " data-category="{{ category.id }}"></div>
+            {% for picture in category.pictures %}
+                <div>
+                    <img class="justify-content-between" src="{{ picture.source }}" alt="{{ category.name }}" width="200px">
+                </div>
+            {% endfor %}
+        </div>
+        <div class="col-12" id="root" data-category="{{ category.id }}"></div>
+    </div>
+{% endblock %}

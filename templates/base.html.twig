@@ -1,17 +1,24 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        {{ encore_entry_link_tags('app') }}
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    {% block stylesheets %}{% endblock %}
+    {{ encore_entry_link_tags('app') }}
 
-    </head>
-    <body>
-    {% include 'bricks/navbar.html.twig' %}
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-        {{ encore_entry_script_tags('app') }}
+</head>
+<body>
+{% for label, messages in app.flashes %}
+    {% for message in messages %}
+        <div class="alert alert--{{ label }} ">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endfor %}
+{% include 'bricks/navbar.html.twig' %}
+{% block body %}{% endblock %}
+{% block javascripts %}{% endblock %}
+{{ encore_entry_script_tags('app') }}
 
-    </body>
+</body>
 </html>
