@@ -3,7 +3,17 @@
 {% block title %}Hello HomeController!{% endblock %}
 
 {% block body %}
-<div class="example-wrapper">
-    <h1>Hello </h1>
-</div>
+    <h3>Qui sommes-nous ? </h3>
+
+    <div>
+        <p>
+            {% for text in texts %}
+                {{ text.text }}
+            {% endfor %}
+        </p>
+    </div>
+    <div class="youtube">
+        <iframe src="https://www.youtube.com/embed/7lWevAdzOgo" width="70%" frameborder="1" allowfullscreen></iframe>
+    </div>
+
 {% endblock %}
