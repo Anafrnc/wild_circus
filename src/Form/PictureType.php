@@ -7,18 +7,20 @@ use App\Entity\Picture;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 class PictureType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name')
+            ->add('name', TextType::class)
             ->add('description', TextareaType::class)
-            ->add('source')
-            ->add('update_at')
+            ->add('source', TextType::class)
+            ->add('update_at', DateTime::class|date("d/m/Y"))
             ->add('category', EntityType::class,
                 [
                     'class' => Category::class,

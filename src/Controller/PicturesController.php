@@ -27,35 +27,4 @@ class PicturesController extends AbstractController
             'images' => $image,
         ]);
     }
-
-    public function addPicture(
-        Request $request,
-        EntityManagerInterface $entityManager,
-        PictureRepository $pictureRepository
-    ): Response {
-        $image = $pictureRepository->findAll();
-
-        $picture = new Picture();
-
-        $pictureForm = $this
-            ->createForm(PictureType::class, $picture)
-            ->remove('source')
-            ->remove('update_at')
-            ->add('send', SubmitType::class)
-        ;
-        $pictureForm->handleRequest($request);
-
-        if ($pictureForm->isSubmitted() && $pictureForm->isValid()) {
-            $picture->setUpdateAt(new \DateTime());
-            //$picture->setCategory($category);
-            $entityManager->persist($picture);
-            $entityManager->flush();
-        }
-
-        return $this->render('pictures/form.html.twig', [
-            'images' => $image,
-            'pictureForm' => $pictureForm->createView(),
-        ]);
-    }
-
 }
