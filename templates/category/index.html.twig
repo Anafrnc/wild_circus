@@ -3,11 +3,23 @@
 {% block title %}{{ category.name}}{% endblock %}
 
 {% block body %}
-    <h1>{{ category.name }}</h1>
-
-    {% for picture in category.pictures %}
-        <h4>{{ picture.name }}</h4>
-        <img src="{{ picture.source }}" alt="image">
-        <p>{{ picture.description }}</p>
-    {% endfor %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 text-center text-white bg-dark pt-2 pb-2">
+                <h1 > {{ category.name }}</h1>
+                {% for picture in category.pictures %}
+                <img class="rounded-circle" src="{{ picture.source }}" alt="{{ category.name }}" width="300px">
+                <p>{{ picture.description }}</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row mt-4">
+            <div class="col-12 text-center">
+            </div>
+            <div class="col-12" id="root" data-category="{{ category.id }}"></div>
+        </div>
+    </div>
 {% endblock %}
+
