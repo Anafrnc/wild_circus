@@ -3,18 +3,14 @@
 {% block title %}Hello PicturesController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <div class="row row-cols-1 row-cols-md-2">
+        {% for image in images %}
+            <ul>
+                <li>{{ image.category.name }}</li>
+            </ul>
+            <img src="{{ image.source }}">
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/home/wilder/Documents/wild_circus/src/Controller/PicturesController.php'|file_link(0) }}">src/Controller/PicturesController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/home/wilder/Documents/wild_circus/templates/pictures/index.html.twig'|file_link(0) }}">templates/pictures/index.html.twig</a></code></li>
-    </ul>
-</div>
+        {% endfor %}
+    </div>
 {% endblock %}
