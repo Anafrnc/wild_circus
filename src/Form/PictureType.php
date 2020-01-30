@@ -20,7 +20,6 @@ class PictureType extends AbstractType
             ->add('name', TextType::class)
             ->add('description', TextareaType::class)
             ->add('source', TextType::class)
-            ->add('update_at', DateTime::class|date("d/m/Y"))
             ->add('category', EntityType::class,
                 [
                     'class' => Category::class,

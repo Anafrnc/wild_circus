@@ -20,40 +20,30 @@ class UploadController extends AbstractController
     /**
      * @Route("/", name="index")
      */
-    public function index()
-    {
-        return $this->render('upload/index.html.twig', [
-        ]);
-    }
-
     public function upload(
         Request $request,
         EntityManagerInterface $entityManager,
         PictureRepository $pictureRepository
     ): Response {
-        $image = $pictureRepository->findAll();
 
         $picture = new Picture();
 
         $uploadForm = $this
             ->createForm(PictureType::class, $picture)
-            ->remove('source')
-            ->remove('update_at')
             ->add('send', SubmitType::class)
         ;
         $uploadForm->handleRequest($request);
 
         if ($uploadForm->isSubmitted() && $uploadForm->isValid()) {
-            $picture->setUpdateAt(new \DateTime());
-            //$picture->setCategory($category);
             $entityManager->persist($picture);
             $entityManager->flush();
 
-            return $this->redirectToRoute('gallery_index');
+            //return $this->redirectToRoute('/');
+
         }
 
-        return $this->render('upload/form.html.twig', [
-            'uploadForm' => $uploadForm->createView(),
+        return $this->render('upload/index.html.twig', [
+            'form' => $uploadForm->createView(),
         ]);
     }
 
