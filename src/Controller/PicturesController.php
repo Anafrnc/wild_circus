@@ -57,4 +57,5 @@ class PicturesController extends AbstractController
             'pictureForm' => $pictureForm->createView(),
         ]);
     }
+
 }

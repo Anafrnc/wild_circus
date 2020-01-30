@@ -3,14 +3,10 @@
 {% block title %}Pictures{% endblock %}
 
 {% block body %}
-
+    {{ render(controller('App\\Controller\\CategoryController::renderNavBar')) }}
     <div class="row row-cols-1 row-cols-md-2">
         {% for image in images %}
-            <ul>
-                <li>{{ image.category.name }}</li>
-            </ul>
             <img src="{{ image.source }}">
-
         {% endfor %}
     </div>
 {% endblock %}
