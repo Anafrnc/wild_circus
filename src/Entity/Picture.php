@@ -87,7 +87,7 @@ class Picture
         return $this;
     }
 
-    public function setSourceFile(File $image = null): Picture
+    public function setSourceFile(File $image = null): void
     {
         $this->sourceFile = $image;
         return $this;
