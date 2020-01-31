@@ -2,6 +2,6 @@ vich_uploader:
     db_driver: orm
 
     mappings:
-        products:
+        sources:
         uri_prefix: /images/products
         upload_destination: '%upload_directory%'

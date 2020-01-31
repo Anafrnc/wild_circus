@@ -3,9 +3,12 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\PictureRepository")
+ * @Vich\Uploadable
  */
 class Picture
 {
@@ -28,8 +31,15 @@ class Picture
 
     /**
      * @ORM\Column(type="text")
+     * @var string
      */
     private $source;
+
+    /**
+     * @Vich\UploadableField(mapping="sources", fileNameProperty="source")
+     * @var File
+     */
+    private $sourceFile;
 
         /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="pictures")
@@ -75,6 +85,17 @@ class Picture
         $this->source = $source;
 
         return $this;
+    }
+
+    public function setSourceFile(File $image = null): Picture
+    {
+        $this->sourceFile = $image;
+        return $this;
+    }
+
+    public function getSourceFile(): ?File
+    {
+        return $this->sourceFile;
     }
 
     public function getCategory(): ?Category
