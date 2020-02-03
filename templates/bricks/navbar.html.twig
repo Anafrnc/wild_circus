@@ -2,7 +2,7 @@
     <img src="{{  asset("build/images/circus-tent-logo.jpg") }}">
 </div>
 <nav class="nav ">
-    <a class="nav-link active" href="#">Présentation</a>
-    <a class="nav-link" href="#">La galerie</a>
-    <a class="nav-link" href="#">Nous contacter</a>
+    <a class="nav-link active" href="{{ path('home_index') }}">Présentation</a>
+    <a class="nav-link" href="{{ path('pictures_index') }}">La galerie</a>
+    <a class="nav-link" href="{{ path('contact_index') }}">Nous contacter</a>
 </nav>
